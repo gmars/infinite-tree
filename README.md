@@ -1,4 +1,7 @@
 # infinite-tree
+
+[中文文档](README.md) | [English manual](README_EN.md)
+
 php的无限树工具包
 
 >之前我已经写过一个无限级分类的PHP包名称叫tp5-nestedsets在packagist上的安装量还是挺大的。但是tp5-nestedsets是基于tp5的很显然其灵活性不够高。而infinite-tree是一个不受框架限制的无限级分类的包。
