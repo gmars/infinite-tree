@@ -1,0 +1,19 @@
+{
+    "name": "gmars/infinite-tree",
+    "description": "a infinite tree library",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "weiyongqiang",
+            "email": "hayixia606@163.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "gmars\\infinitetree\\": "src"
+        }
+    }
+}
