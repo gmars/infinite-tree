@@ -88,12 +88,7 @@ class InfiniteTree
             throw $e;
         }
     }
-
-    public function __destruct()
-    {
-        // TODO: Implement __destruct() method.
-        mysqli_close($this->_db);
-    }
+    
 
     /**
      * 配置对应的键
