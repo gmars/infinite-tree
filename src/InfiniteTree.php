@@ -306,7 +306,7 @@ class InfiniteTree
             $level = $parent[$this->_levelKey] + 1;
         }
         $sql = "UPDATE {$this->_tableName} SET {$this->_rightKey} = {$this->_rightKey}+2,{$this->_leftKey} = IF({$this->_leftKey}>={$key},{$this->_leftKey}+2,{$this->_leftKey}) WHERE {$this->_rightKey}>={$key}";
-        $this->_db->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+        $this->_db->begin_transaction(MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT);
         if ($this->_query($sql) === false) {
             $this->_db->rollback();
             throw new \Exception($this->_error());
@@ -341,7 +341,7 @@ class InfiniteTree
         $branchWidth = $item[$this->_rightKey] - $item[$this->_leftKey] + 1;
         $delSql = "DELETE FROM $this->_tableName WHERE $this->_leftKey >= {$item[$this->_leftKey]} AND $this->_rightKey <= {$item[$this->_rightKey]}";
         $updateSql = "UPDATE {$this->_tableName} SET {$this->_leftKey} = IF({$this->_leftKey}>{$item[$this->_leftKey]}, {$this->_leftKey}-{$branchWidth}, {$this->_leftKey}), {$this->_rightKey} = {$this->_rightKey}-{$branchWidth} WHERE {$this->_rightKey}>{$item[$this->_rightKey]}";
-        $this->_db->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+        $this->_db->begin_transaction(MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT);
         if ($this->_query($delSql) === false) {
             $this->_db->rollback();
             throw new \Exception($this->_error());
