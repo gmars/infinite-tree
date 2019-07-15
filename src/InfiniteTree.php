@@ -83,7 +83,7 @@ class InfiniteTree
             'hostport' => $port
             ) = $dbConfig;
         try {
-            $this->_db = mysqli_connect($host, $userName, $password, $dataBase, $port);
+            $this->_db = mysqli_connect($host, $userName, $password, $dataBase, (int)$port);
         } catch (\Exception $e) {
             throw $e;
         }
